@@ -1,0 +1,14 @@
+:root { 
+  --alizarin-crimson: #e02020;
+  --eucalyptus: #44d7b6;
+  --selective-yellow: #f7b500;
+  --sheen-green: #6dd400;
+ 
+  --font-size-l: 21px;
+  --font-size-m: 18px;
+  --font-size-s: 16px;
+  --font-size-xs: 14px;
+ 
+  --font-family-menlo-regular: "Menlo-Regular", Helvetica;
+  --font-family-monaco: "Monaco", Helvetica;
+}
