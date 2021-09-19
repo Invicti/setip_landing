@@ -22,6 +22,7 @@
   "author": "Lucas Jellema",
   "license": "ISC",
   "dependencies": {
+    "github-webhook-handler": "^1.0.0",
     "shelljs": "^0.8.2"
   }
 }
