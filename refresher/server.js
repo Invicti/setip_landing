@@ -62,7 +62,7 @@ var server = http.createServer(function (request, response) {
                 }
                 console.log("WebHook Push Event: " + JSON.stringify(push))
                 if (push.commits.filesTouched.length > 0) {
-                    console.log("This commit involves changes to the Node application, so let's perform a git pull ")
+                    console.log("This commit involves changes to the pplication code, so let's perform a git pull ")
                     refreshAppFromGit();
                 }
             } catch (e) {
@@ -97,6 +97,7 @@ function refreshAppFromGit() {
                     shell.echo('Error: Git Pull failed');
                     //            shell.exit(1);
                 } else {
+                    shell.echo('Refresh call executed.');
                     //        shell.exec('npm install')
                     //  shell.exit(0);
                 } 
