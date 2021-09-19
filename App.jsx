@@ -22,7 +22,7 @@ const copyActionData = {
 const artboardData = {
   poweredAndHostedB: "Powered and hosted by setip.io",
   setipioLlc2: "© setipio, LLC. 2021",
-  oneApiOneIpOwn: "One API, one IP, own your cloud",
+  oneApiOneIpOwn: "One API, one IP, own your cloud anywhere",
   commandarea: (
     <>
       curl -X &quot;POST&quot; &quot;http://api.setip.io/api/ip&quot; \<br /> -H
