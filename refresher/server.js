@@ -19,7 +19,7 @@ var server = http.createServer(function (request, response) {
         refreshAppFromGit();
         response.write(`RELOADED!!${new Date().toISOString()}`);
         response.end();
-        
+
         console.log('reload request handled...');
     }
     else if (request.method === 'POST' && request.url === GITHUB_WEBHOOK_PATH) {
@@ -29,7 +29,6 @@ var server = http.createServer(function (request, response) {
         }).on('end', () => {
             body = Buffer.concat(body).toString();
             // at this point, `body` has the entire request body stored in it as a string
-
             console.log(`GitHub WebHook event handling starting ${new Date().toISOString()}...`);
             var githubEvent = JSON.parse(body)
             console.debug(`github event: ${JSON.stringify(githubEvent)}`)
