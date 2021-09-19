@@ -24,12 +24,14 @@ var server = http.createServer(function (request, response) {
     }
     else if (request.method === 'POST' && request.url === GITHUB_WEBHOOK_PATH) {
         let body = [];
-        request.on('data', (chunk) => {
+        request.on('data', 
+        (chunk) => {
             body.push(chunk);
         }).on('end', () => {
 
             //Start Github response.
             body = Buffer.concat(body).toString();
+            body = decodeURI(body);
             // at this point, `body` has the entire request body stored in it as a string
             console.log(`GitHub WebHook event handling starting ${new Date().toISOString()}...`);
             var githubEvent = JSON.parse(body)
