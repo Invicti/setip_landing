@@ -1,6 +1,4 @@
 FROM ubuntu
-
-
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt -yq update
 RUN apt -yq install nodejs
