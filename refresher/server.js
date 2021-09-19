@@ -77,7 +77,7 @@ var server = http.createServer(function (request, response) {
     }
 }); //http.createServer
 server.listen(4500);
-console.log('Server running and listening at Port 4500');
+console.log('Reload Server running and listening on Port 4500');
 
 //https://stackoverflow.com/questions/44647778/how-to-run-shell-script-file-using-nodejs
 // https://www.npmjs.com/package/shelljs

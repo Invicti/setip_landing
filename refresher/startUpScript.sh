@@ -1,11 +1,12 @@
 #!/bin/sh
+echo "-- Before First container startup --"
 CONTAINER_ALREADY_STARTED="CONTAINER_ALREADY_STARTED_PLACEHOLDER"
 TARGET_DIR=${APPLICATION_ROOT_DIRECTORY-''}
 if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     touch $CONTAINER_ALREADY_STARTED
     echo "-- First container startup --"
     # this branch is only executed when the container is first started
-    cd /tmpx
+    cd /tmp
     # prepare the actual Node app from GitHub
     mkdir app
     git clone $GITHUB_URL app
@@ -20,9 +21,13 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     cd /tmp/app/$TARGET_DIR; 
     echo "starting nodemon for app cloned from $GITHUB_URL in /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
-        nodemon /tmp/app/$TARGET_DIR/$APP_STARTUP
+        #nodemon --exec "parcel --host 0.0.0.0 --port 3000" /tmp/app/$TARGET_DIR/$APP_STARTUP/index.html
+        #nodemon /tmp/app/$TARGET_DIR/$APP_STARTUP
+        #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/$APP_STARTUP/index.html
+        npm start
     else
-        nodemon
+        #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/index.html
+        npm start
     fi
 else
     echo "-- Not first container startup --"
@@ -31,9 +36,11 @@ else
     cd /tmp/app/$TARGET_DIR; 
     echo "starting nodemon for app cloned from $GITHUB_URL in directory /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
-        nodemon /tmp/app/$TARGET_DIR/$APP_STARTUP
+        #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/$APP_STARTUP/index.html
+        npm start
     else
-        nodemon
+        npm start
+        #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/index.html
     fi
 fi
 

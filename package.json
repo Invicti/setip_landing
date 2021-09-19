@@ -1,7 +1,7 @@
 {
   "name": "react-package",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel --host 0.0.0.0 --port 3000 index.html"
   },
   "dependencies": {
     "parcel-bundler": "^1.12.4",
