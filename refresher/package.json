@@ -23,6 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "github-webhook-handler": "^1.0.0",
-    "shelljs": "^0.8.2"
+    "shelljs": "^0.8.2",
+    "simple-git": "^2.45.1"
   }
 }

@@ -98,19 +98,19 @@ async function refreshAppFromGit() {
          try {
                 await git.pull();
                 console.info(`Succesfully pulled repository into: ${appdir}`)
-                //const { exec } = require("child_process");
-
-                // exec("cd " + process.env.RELOAD_PATH + "&& npm restart", (error, stdout, stderr) => {
-                //     if (error) {
-                //         console.log(`error: ${error.message}`);
-                //         return;
-                //     }
-                //     if (stderr) {
-                //         console.log(`stderr: ${stderr}`);
-                //         return;
-                //     }
-                //     console.log(`stdout: ${stdout}`);
-                // });
+                
+                const { exec } = require("child_process");
+                exec("cd " + process.env.RELOAD_PATH + "&& npm run-script build", (error, stdout, stderr) => {
+                    if (error) {
+                        console.log(`npm build error running : ${error.message}`);
+                        return;
+                    }
+                    if (stderr) {
+                        console.log(`npm build stderr: ${stderr}`);
+                        return;
+                    }
+                    console.log(`npm build stdout: ${stdout}`);
+                });
                    
 
             }
