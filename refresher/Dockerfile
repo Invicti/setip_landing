@@ -15,8 +15,8 @@ COPY ../package.json /tmp
 COPY ../server.js /tmp
 RUN cd /tmp && npm install 
 EXPOSE 3000
-EXPOSE 3000
-RUN yarn global add parcel-bundler
+EXPOSE 4500
+RUN yarn global add parcel
 COPY startUpScript.sh /tmp
 COPY gitRefresh.sh /tmp
 #CMD ["chmod", "+x",  "/tmp/gitRefresh.sh","chmod", "+x",  "/tmp/startUpScript.sh"]
