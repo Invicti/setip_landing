@@ -17,9 +17,9 @@ EXPOSE 4500
 RUN yarn global add parcel-bundler
 COPY startUpScript.sh /tmp
 COPY gitRefresh.sh /tmp
-#CMD ["chmod", "+x",  "/tmp/gitRefresh.sh","chmod", "+x",  "/tmp/startUpScript.sh"]
+CMD ["chmod", "+x",  "/tmp/gitRefresh.sh"]
 #CMD ["chmod", "+x",  "/tmp/gitRefresh.sh"]
-RUN /bin/bash -c 'chmod +x /tmp/gitRefresh.sh'
+#RUN /bin/bash -c 'chmod +x /tmp/gitRefresh.sh'
 RUN /bin/bash -c 'chmod +x /tmp/startUpScript.sh'
 #ENTRYPOINT ["sh", "/tmp/startUpScript.sh"]
 #ENTRYPOINT ["sh"]
