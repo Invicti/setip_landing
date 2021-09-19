@@ -29,6 +29,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
         #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/index.html
         npm start
     fi
+    
 else
     echo "-- Not first container startup --"
     cd /tmp
