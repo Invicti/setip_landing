@@ -22,13 +22,10 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     echo "starting npm for app cloned from $GITHUB_URL in /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
         cd /tmp/app/$TARGET_DIR; 
-        npm  run-script dev
     else
         cd /tmp/app/$TARGET_DIR/$APP_STARTUP; 
-        npm  run-script dev
-        #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/index.html
     fi
-    
+    npm  run-script dev;
 else
     echo "-- Not first container startup --"
     cd /tmp
@@ -37,11 +34,9 @@ else
     echo "starting app's startup npm dev script cloned from $GITHUB_URL in directory /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
         cd /tmp/app/$TARGET_DIR; 
-        npm  run-script dev
     else
         cd /tmp/app/$TARGET_DIR/$APP_STARTUP; 
-        npm  run-script dev
-        #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/index.html
     fi
+    npm  run-script dev;
 fi
 
