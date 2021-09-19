@@ -1,4 +1,4 @@
-./#!/bin/sh
+#!/bin/bash
 cd /tmp/app
 git pull 
 #install dependencies for the Node app

@@ -19,7 +19,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     echo "starting reload app and nodemon"
     (echo "start reload";npm start; echo "reload app finished") & 
     cd /tmp/app/$TARGET_DIR; 
-    echo "starting nodemon for app cloned from $GITHUB_URL in /tmp/app/${TARGET_DIR}";
+    echo "starting npm for app cloned from $GITHUB_URL in /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
         #nodemon --exec "parcel --host 0.0.0.0 --port 3000" /tmp/app/$TARGET_DIR/$APP_STARTUP/index.html
         #nodemon /tmp/app/$TARGET_DIR/$APP_STARTUP
