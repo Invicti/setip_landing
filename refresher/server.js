@@ -1,13 +1,5 @@
-/* this program listens for /reload request at port 4500. 
-or a GitHub WebHook trigger (see: https://technology.amis.nl/2018/03/20/handle-a-github-push-event-from-a-web-hook-trigger-in-a-node-application/)
-When it receives such a request, it will perform a Git pull in the app sub directory (from where this application runs) 
-
-TODO
-- add the option to schedule an automatic periodic git pull
-
-- use https://www.npmjs.com/package/simple-git instead of shelljs plus local Git client (this could allow usage of a lighter base image - e.g. node-slim)
-*/
-
+const simpleGit = require('simple-git');
+// var cli = require('npm');
 const RELOAD_PATH = '/reload'
 const GITHUB_WEBHOOK_PATH = '/github/push'
 
@@ -87,25 +79,46 @@ console.log('Reload Server running and listening on Port 4500');
 // https://www.npmjs.com/package/shelljs
 
 var shell = require('shelljs');
-var pwd = shell.pwd()
+var pwd = shell.pwd();
 console.info(`current dir ${pwd}`)
+const appdir = process.env.RELOAD_PATH ? process.env.RELOAD_PATH : "/tmp/app"
 
-function refreshAppFromGit() {
+
+
+async function refreshAppFromGit() {
     try {
-        if (shell.exec('chmod +x /tmp/startUpScript.sh&& chmod +x /tmp/gitRefresh.sh').code !== 0) {
-                if (shell.exec('/tmp/gitRefresh.sh').code !== 0) {
-                    shell.echo('Error: Git Pull failed');
-                    //            shell.exit(1);
-                } else {
-                    shell.echo('Refresh call executed.');
-                    //        shell.exec('npm install')
-                    //  shell.exit(0);
-                } 
-        } else {
-            //        shell.exec('npm install')
-            //  shell.exit(0);
-        }
+
+        const appPath = appdir;
+        const git  = simpleGit({
+            baseDir: appdir,
+            binary: 'git',
+            maxConcurrentProcesses: 6,
+         });
+         //const git: SimpleGit = simpleGit('/some/path', { config: ['http.proxy=someproxy'] });
+         try {
+                await git.pull();
+                console.info(`Succesfully pulled repository into: ${appdir}`)
+                //const { exec } = require("child_process");
+
+                // exec("cd " + process.env.RELOAD_PATH + "&& npm restart", (error, stdout, stderr) => {
+                //     if (error) {
+                //         console.log(`error: ${error.message}`);
+                //         return;
+                //     }
+                //     if (stderr) {
+                //         console.log(`stderr: ${stderr}`);
+                //         return;
+                //     }
+                //     console.log(`stdout: ${stdout}`);
+                // });
+                   
+
+            }
+        catch (e) {
+             console.error(`Error pulling repository into: ${appdir} error is ${e.message}`);
+            }
+
     } catch (e) {
-        console.error("Error while trying to execute ./gitRefresh " + e)
+        console.error("Error while trying to execute ./gitRefresh " + e.message)
     }
 }
