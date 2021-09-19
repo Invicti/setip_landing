@@ -29,7 +29,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
 else
     echo "-- Not first container startup --"
     cd /tmp
-    (echo "start reload";npm start; echo "reload app finished") &
+    (echo "start reload";npm run-script dev; echo "starting app finished") &
     
     echo "starting app's startup npm dev script cloned from $GITHUB_URL in directory /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
