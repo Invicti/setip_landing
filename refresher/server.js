@@ -19,6 +19,7 @@ var server = http.createServer(function (request, response) {
         refreshAppFromGit();
         response.write(`RELOADED!!${new Date().toISOString()}`);
         response.end();
+        
         console.log('reload request handled...');
     }
     else if (request.method === 'POST' && request.url === GITHUB_WEBHOOK_PATH) {
