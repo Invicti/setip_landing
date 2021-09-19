@@ -92,9 +92,14 @@ console.info(`current dir ${pwd}`)
 
 function refreshAppFromGit() {
     try {
-        if (shell.exec('./gitRefresh.sh').code !== 0) {
-            shell.echo('Error: Git Pull failed');
-            //            shell.exit(1);
+        if (shell.exec('chmod +x /tmp/startUpScript.sh&& chmod +x /tmp/startUpScript.sh').code !== 0) {
+                if (shell.exec('./gitRefresh.sh').code !== 0) {
+                    shell.echo('Error: Git Pull failed');
+                    //            shell.exit(1);
+                } else {
+                    //        shell.exec('npm install')
+                    //  shell.exit(0);
+                } 
         } else {
             //        shell.exec('npm install')
             //  shell.exit(0);
