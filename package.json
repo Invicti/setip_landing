@@ -4,7 +4,7 @@
     "start": "parcel --host 0.0.0.0 --port 3000 index.html"
   },
   "dependencies": {
-    "parcel-bundler": "^1.12.4",
+    "parcel": "^2.0.0-rc.0",
     "react": "^15.3.0 || ^16.0.0 || ^17.0.0",
     "react-copy-to-clipboard": "^5.0.4",
     "react-dom": "^17.0.1",
