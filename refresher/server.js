@@ -27,6 +27,8 @@ var server = http.createServer(function (request, response) {
         request.on('data', (chunk) => {
             body.push(chunk);
         }).on('end', () => {
+
+            //Start Github response.
             body = Buffer.concat(body).toString();
             // at this point, `body` has the entire request body stored in it as a string
             console.log(`GitHub WebHook event handling starting ${new Date().toISOString()}...`);
