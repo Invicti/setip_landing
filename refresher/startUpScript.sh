@@ -21,26 +21,26 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     cd /tmp/app/$TARGET_DIR; 
     echo "starting npm for app cloned from $GITHUB_URL in /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
-        #nodemon --exec "parcel --host 0.0.0.0 --port 3000" /tmp/app/$TARGET_DIR/$APP_STARTUP/index.html
-        #nodemon /tmp/app/$TARGET_DIR/$APP_STARTUP
-        #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/$APP_STARTUP/index.html
-        npm start
+        cd /tmp/app/$TARGET_DIR; 
+        npm  run-script dev
     else
+        cd /tmp/app/$TARGET_DIR/$APP_STARTUP; 
+        npm  run-script dev
         #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/index.html
-        npm start
     fi
     
 else
     echo "-- Not first container startup --"
     cd /tmp
     (echo "start reload";npm start; echo "reload app finished") &
-    cd /tmp/app/$TARGET_DIR; 
-    echo "starting nodemon for app cloned from $GITHUB_URL in directory /tmp/app/${TARGET_DIR}";
+    
+    echo "starting app's startup npm dev script cloned from $GITHUB_URL in directory /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
-        #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/$APP_STARTUP/index.html
-        npm start
+        cd /tmp/app/$TARGET_DIR; 
+        npm  run-script dev
     else
-        npm start
+        cd /tmp/app/$TARGET_DIR/$APP_STARTUP; 
+        npm  run-script dev
         #parcel --host 0.0.0.0 --port 3000 /tmp/app/$TARGET_DIR/index.html
     fi
 fi
