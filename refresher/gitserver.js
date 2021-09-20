@@ -118,7 +118,7 @@ async function refreshAppFromGit() {
     try {
 
         const git  = simpleGit({
-            baseDir: appdir,
+            baseDir: RELOAD_PATH,
             binary: 'git',
             maxConcurrentProcesses: 6,
          });
