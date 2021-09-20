@@ -31,9 +31,9 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     cd /tmp/app/$TARGET_DIR; 
     echo "starting npm for app cloned from $GITHUB_URL in /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
-        cd /tmp/app/$TARGET_DIR; 
+        cd /tmp/app/; 
     else
-        cd /tmp/app/$TARGET_DIR/$APP_STARTUP; 
+        cd /tmp/app/$APP_STARTUP; 
     fi
     npm  run-script dev;
 else
