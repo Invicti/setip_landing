@@ -21,8 +21,8 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     # prepare the actual Node app from GitHub
     mkdir app
     git clone $GITHUB_URL app
-    echo "GIT repo was cloned to /tmp/app/${TARGET_DIR}"
-    cd /tmp/app/$TARGET_DIR
+    echo "GIT repo was cloned to /tmp/app/${APP_RELOAD_PATH}"
+    cd /tmp/app/$APP_RELOAD_PATH
     npm install parcel@next --include=dev 
     #install dependencies for the Node app
     npm install
@@ -31,10 +31,10 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     echo "starting gitreload and npm  run-script dev"
     (echo "start reload";npm start; echo "reload app finished") & 
     echo "starting npm  run-script dev for app cloned from $GITHUB_URL in /tmp/app/${TARGET_DIR}";
-    if [ ! -z $APP_STARTUP ]; then
+    if [ ! -z $APP_RELOAD_PATH ]; then
         cd /tmp/app/; 
     else
-        cd /tmp/app/$APP_STARTUP; 
+        cd /tmp/app/$APP_RELOAD_PATH; 
     fi
     rm -fr .parcel-cache&& npm  run-script dev;
 else
@@ -42,11 +42,11 @@ else
     cd /tmp
     (echo "start reload";npm run-script dev; echo "starting app finished") &
     
-    echo "starting app's startup npm dev script cloned from $GITHUB_URL in directory /tmp/app/${TARGET_DIR}";
-    if [ ! -z $APP_STARTUP ]; then
+    echo "starting app's startup npm dev script cloned from $GITHUB_URL in directory /tmp/app/${APP_RELOAD_PATH}";
+    if [ ! -z $APP_RELOAD_PATH ]; then
         cd /tmp/app/$APP_STARTUP; 
     else
-        cd /tmp/app/$APP_STARTUP; 
+        cd /tmp/app/$APP_RELOAD_PATH; 
     fi
     rm -fr .parcel-cache&& npm  run-script dev;
 fi
