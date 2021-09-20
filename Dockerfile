@@ -30,12 +30,6 @@ ENV GITHUB_EXTERNAL_LISTEN_PORT=ARG_GITHUB_EXTERNAL_LISTEN_PORT
 ARG ARG_GITHUB_EXTERNAL_LISTEN_IP
 ENV GITHUB_EXTERNAL_LISTEN_IP=ARG_GITHUB_EXTERNAL_LISTEN_IP
 
-
-
-
-
-
-
 RUN apt -yq update
 RUN apt -yq install nodejs
 RUN apt -yq install npm
@@ -52,8 +46,7 @@ COPY ./refresher/gitserver.js /tmp
 RUN cd /tmp && npm install 
 EXPOSE 3000
 EXPOSE 4500
-COPY ./refresher/startUpScript.sh /tmp
-COPY ./refresher/gitRefresh.sh /tmp
+COPY startUpScript.sh /tmp
 CMD ["chmod", "+x",  "/tmp/gitRefresh.sh"]
 RUN /bin/bash -c 'chmod +x /tmp/startUpScript.sh&& chmod +x /tmp/gitRefresh.sh'
 ENTRYPOINT ["/tmp/startUpScript.sh"]
