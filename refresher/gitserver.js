@@ -15,6 +15,7 @@ const GITHUB_EXTERNAL_LISTEN_PORT = process.env.GITHUB_EXTERNAL_LISTEN_PORT ? pr
 const sigHeaderName = 'x-hub-signature-256'
 const sigHashAlg = 'sha256'
 
+const fullAppPath = `/tmp/app/${RELOAD_PATH}`;
 var http = require('http');
 
 var requestHeader = "";
@@ -118,17 +119,17 @@ async function refreshAppFromGit() {
     try {
 
         const git  = simpleGit({
-            baseDir: RELOAD_PATH,
+            baseDir: fullAppPath,
             binary: 'git',
             maxConcurrentProcesses: 6,
          });
          //const git: SimpleGit = simpleGit('/some/path', { config: ['http.proxy=someproxy'] });
          try {
                 await git.pull();
-                console.info(`Succesfully pulled repository into: ${RELOAD_PATH}`)
+                console.info(`Succesfully pulled repository into: ${fullAppPath}`)
                 
                 const { exec } = require("child_process");
-                exec("cd " + process.env.RELOAD_PATH + "&& npm run-script build", (error, stdout, stderr) => {
+                exec("cd " + fullAppPath+ "&& npm run-script build", (error, stdout, stderr) => {
                     if (error) {
                         console.log(`npm build error running : ${error.message}`);
                         return;
@@ -143,7 +144,7 @@ async function refreshAppFromGit() {
 
             }
         catch (e) {
-             console.error(`Error pulling repository into: ${RELOAD_PATH} error is ${e.message}`);
+             console.error(`Error pulling repository into: ${fullAppPath} error is ${e.message}`);
             }
 
     } catch (e) {
