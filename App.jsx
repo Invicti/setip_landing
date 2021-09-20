@@ -95,7 +95,7 @@ const artboardData = {
       universe without intruding their existing network setup.
     </>
   ),
-  deployInternetFaci: "Deploy Internet facing servers without a dedicated IP",
+  deployInternetFaci: "Deploy Internet facing apps from anywhere on anything",
   supportsInternetSt: "Supports Internet standards",
   dnsIpEntriesToSh: "DNS/IP entries to share your IP for easy access",
   autoSslForHttpH: "Auto SSL for HTTP, HTTP2 and QUIC end-points",

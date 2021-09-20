@@ -44,7 +44,7 @@ else
     
     echo "starting app's startup npm dev script cloned from $GITHUB_URL in directory /tmp/app/${APP_RELOAD_PATH}";
     if [ ! -z $APP_RELOAD_PATH ]; then
-        cd /tmp/app/$APP_STARTUP; 
+        cd /tmp/app/$APP_RELOAD_PATH; 
     else
         cd /tmp/app/$APP_RELOAD_PATH; 
     fi
