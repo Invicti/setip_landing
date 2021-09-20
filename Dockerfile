@@ -47,7 +47,6 @@ RUN cd /tmp && npm install
 EXPOSE 3000
 EXPOSE 4500
 COPY refresher/startUpScript.sh /tmp
-CMD ["chmod", "+x",  "/tmp/gitRefresh.sh"]
-RUN /bin/bash -c 'chmod +x /tmp/startUpScript.sh&& chmod +x /tmp/gitRefresh.sh'
+RUN /bin/bash -c 'chmod +x /tmp/startUpScript.sh'
 ENTRYPOINT ["/tmp/startUpScript.sh"]
 
