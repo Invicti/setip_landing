@@ -15,6 +15,7 @@ GITHUB_EXTERNAL_LISTEN_PORT=4500
 
 TAG=${TAG/+/-}
 
+set -xe
 git commit -m "auto-commit runlocal.sh" -a
 git push
 
@@ -55,6 +56,7 @@ docker build -t "${REPO}/${IMAGE}:$TAG" \
 --build-arg GITHUB_EXTERNAL_LISTEN_IP=$GITHUB_EXTERNAL_LISTEN_IP \
 --build-arg APP_EXTERNAL_LISTEN_PORT=$APP_EXTERNAL_LISTEN_PORT \
 --build-arg GITHUB_EXTERNAL_LISTEN_PORT=$GITHUB_EXTERNAL_LISTEN_PORT \
+--no-cache \
 .  # --no-cache
 
 
