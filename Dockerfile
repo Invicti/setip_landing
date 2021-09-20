@@ -46,13 +46,13 @@ RUN n latest
 RUN npm install yarn -g
 RUN npm install -g nodemon
 RUN npm install -g parcel
-COPY refresher/package.json /tmp
-COPY refresher/gitserver.js /tmp
+COPY ./refresher/package.json /tmp
+COPY ./refresher/gitserver.js /tmp
 RUN cd /tmp && npm install 
 EXPOSE 3000
 EXPOSE 4500
-COPY refresher/startUpScript.sh /tmp
-COPY refresher/gitRefresh.sh /tmp
+COPY ./refresher/startUpScript.sh /tmp
+COPY ./refresher/gitRefresh.sh /tmp
 CMD ["chmod", "+x",  "/tmp/gitRefresh.sh"]
 RUN /bin/bash -c 'chmod +x /tmp/startUpScript.sh&& chmod +x /tmp/gitRefresh.sh'
 ENTRYPOINT ["/tmp/startUpScript.sh"]
