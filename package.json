@@ -1,9 +1,9 @@
 {
   "name": "react-package",
   "scripts": {
-    "dev": "parcel --port 3000 index.html",
-    "prod": "parcel build  --port 3000 index.html",
-    "build": "parcel build index.html"
+    "dev": "node_modules/parcel/lib/bin.js --port 3000 index.html",
+    "prod": "node_modules/parcel/lib/bin.js build  --port 3000 index.html",
+    "build": "node_modules/parcel/lib/bin.js build index.html"
   },
   "dependencies": {
     "parcel": "^2.0.0-rc.0",
