@@ -86,6 +86,7 @@ var server = http.createServer(function (request, response) {
                     "branch": githubEvent.ref,
                     "finalComment": githubEvent.head_commit.message,
                     "commits": commits
+                    
                 }
                 console.log("Github hook data:: " + JSON.stringify(push))
                 if (push.commits.filesTouched.length > 0) {
