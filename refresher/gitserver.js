@@ -5,8 +5,10 @@ const crypto = require('crypto')
 // var cli = require('npm');
 const RELOAD_PATH = process.env.RELOAD_PATH  ? process.env.RELOAD_PATH : '/tmp/app';
 const GITHUB_WEBHOOK_PATH = process.env.GITHUB_WEBHOOK_PATH ? process.env.GITHUB_WEBHOOK_PATH : '/githook'
-const GITHUB_WEBHOOK_KEY = process.env.GITHUB_WEBHOOK_KEY ? process.env.GITHUB_WEBHOOK_KEY : '';
-//const LISTEN_PORT = process.env.LISTEN_PORT ? process.env.LISTEN_PORT : 3000;
+const GITHUB_HOOK_SECRET = process.env.GITHUB_HOOK_SECRET ? process.env.GITHUB_HOOK_SECRET : '';
+const GITHUB_EXTERNAL_LISTEN_IP = process.env.GITHUB_EXTERNAL_LISTEN_IP ? process.env.GITHUB_EXTERNAL_LISTEN_IP : '3000';
+const GITHUB_EXTERNAL_LISTEN_PORT = process.env.GITHUB_EXTERNAL_LISTEN_PORT ? process.env.GITHUB_EXTERNAL_LISTEN_PORT : '4500';
+
 // For these headers, a sigHashAlg of sha1 must be used instead of sha256
 // GitHub: X-Hub-Signature
 // Gogs:   X-Gogs-Signature
@@ -53,7 +55,7 @@ var server = http.createServer(function (request, response) {
                 response.end();
             } else {
                 const sig = Buffer.from(requestHeader || '', 'utf8')
-                const hmac = crypto.createHmac(sigHashAlg, GITHUB_WEBHOOK_KEY)
+                const hmac = crypto.createHmac(sigHashAlg, GITHUB_HOOK_SECRET)
                 const digest = Buffer.from(sigHashAlg + '=' + hmac.update(body).digest('hex'), 'utf8')         
                 if (sig.length !== digest.length || !crypto.timingSafeEqual(digest, sig)) {          
                   console.info(`Request body digest (${digest}) did not match ${sigHeaderName} (${sig})`)
@@ -102,7 +104,10 @@ var server = http.createServer(function (request, response) {
         response.end();
     }
 }); //http.createServer
-server.listen(4500);
+server.listen(
+    GITHUB_EXTERNAL_LISTEN_PORT,
+    GITHUB_EXTERNAL_LISTEN_IP
+    );
 console.log('Reload Server running and listening on Port 4500');
 
 

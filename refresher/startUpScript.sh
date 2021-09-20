@@ -21,6 +21,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     git clone $GITHUB_URL app
     echo "GIT repo was cloned to /tmp/app/${TARGET_DIR}"
     cd /tmp/app/$TARGET_DIR
+    npm install parcel@next --include=dev 
     #install dependencies for the Node app
     npm install
     #start  both the reload app (in the background) and (using nodemon) the actual Node app
