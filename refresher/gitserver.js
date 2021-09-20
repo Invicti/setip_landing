@@ -16,7 +16,6 @@ const sigHeaderName = 'x-hub-signature-256'
 const sigHashAlg = 'sha256'
 
 const fullAppPath = `/tmp/app/${RELOAD_PATH}`;
-console.info(`GitHub pull going to: ${fullAppPath}`)
 var http = require('http');
 
 var requestHeader = "";
@@ -52,6 +51,8 @@ var server = http.createServer(function (request, response) {
 
             // at this point, `body` has the entire request body stored in it as a string
             console.log(`Received Github hook: ${new Date().toISOString()}...`);
+            console.info(`GitHub pull going to: ${fullAppPath}`)
+
             if ( !requestHeader) {
                 console.log('No signature, disconnecting...');
                 response.end();
