@@ -43,6 +43,7 @@ RUN apt -yq install wget
 RUN apt -yq install git
 RUN npm install n -g
 RUN n latest
+
 RUN npm install yarn -g
 RUN npm install -g nodemon
 RUN npm install -g parcel
