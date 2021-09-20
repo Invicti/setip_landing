@@ -1,5 +1,5 @@
 #!/bin/sh
-MAIN_TAG="0.1.2"
+MAIN_TAG="0.1.3"
 TAG="${MAIN_TAG:-latest}"
 IMAGE="live-reload"
 REPO="invictieu"
