@@ -68,9 +68,10 @@ docker rm /${DOCKER_APP_NAME} -f
 # It will return the endpoint IPS that can be inserted
 # below in place of the IPs.
 
+
 docker run -it  \
 --name ${DOCKER_APP_NAME} \
---entrypoint /bin/bash \
+--entrypoint tmp/startUpScript.sh \
   -p ${APP_EXTERNAL_LISTEN_IP}:${APP_EXTERNAL_LISTEN_PORT}:3000 \
   -p ${GITHUB_EXTERNAL_LISTEN_IP}:${GITHUB_EXTERNAL_LISTEN_PORT}:4500  \
   -e GITHUB_URL=${GITHUB_URL}  \

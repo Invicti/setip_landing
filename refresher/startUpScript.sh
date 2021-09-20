@@ -35,7 +35,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     else
         cd /tmp/app/$APP_STARTUP; 
     fi
-    npm  run-script dev;
+    rm -fr .parcel-cache&& npm  run-script dev;
 else
     echo "-- Not first container startup --"
     cd /tmp
@@ -47,6 +47,6 @@ else
     else
         cd /tmp/app/$TARGET_DIR/$APP_STARTUP; 
     fi
-    npm  run-script dev;
+    rm -fr .parcel-cache&& npm  run-script dev;
 fi
 
