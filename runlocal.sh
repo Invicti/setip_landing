@@ -16,9 +16,12 @@ GITHUB_EXTERNAL_LISTEN_PORT=4500
 TAG=${TAG/+/-}
 
 set +xe
-git commit -m "auto-commit runlocal.sh" -a
-git push
 
+git add -A
+if ! git diff-index --quiet HEAD; then
+  git commit -m "auto-commit runlocal.sh"
+  git push origin main
+fi
 # comment below to use this script to run your app locally.
 # this will:
 # 1. run an install npm in the current directory with existing code in the repo.
@@ -56,7 +59,6 @@ docker build -t "${REPO}/${IMAGE}:$TAG" \
 --build-arg GITHUB_EXTERNAL_LISTEN_IP=$GITHUB_EXTERNAL_LISTEN_IP \
 --build-arg APP_EXTERNAL_LISTEN_PORT=$APP_EXTERNAL_LISTEN_PORT \
 --build-arg GITHUB_EXTERNAL_LISTEN_PORT=$GITHUB_EXTERNAL_LISTEN_PORT \
---no-cache \
 .  # --no-cache
 
 
