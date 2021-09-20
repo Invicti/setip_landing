@@ -46,7 +46,7 @@ COPY ./refresher/gitserver.js /tmp
 RUN cd /tmp && npm install 
 EXPOSE 3000
 EXPOSE 4500
-COPY startUpScript.sh /tmp
+COPY refresher/startUpScript.sh /tmp
 CMD ["chmod", "+x",  "/tmp/gitRefresh.sh"]
 RUN /bin/bash -c 'chmod +x /tmp/startUpScript.sh&& chmod +x /tmp/gitRefresh.sh'
 ENTRYPOINT ["/tmp/startUpScript.sh"]
