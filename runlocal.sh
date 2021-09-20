@@ -15,7 +15,7 @@ GITHUB_EXTERNAL_LISTEN_PORT=4500
 
 TAG=${TAG/+/-}
 
-set -xe
+set +xe
 git commit -m "auto-commit runlocal.sh" -a
 git push
 
