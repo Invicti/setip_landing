@@ -16,6 +16,7 @@ const sigHeaderName = 'x-hub-signature-256'
 const sigHashAlg = 'sha256'
 
 const fullAppPath = `/tmp/app/${RELOAD_PATH}`;
+console.info(`GitHub pull going to: ${fullAppPath}`)
 var http = require('http');
 
 var requestHeader = "";
@@ -148,6 +149,6 @@ async function refreshAppFromGit() {
             }
 
     } catch (e) {
-        console.error("Error while trying to execute ./gitRefresh " + e.message)
+        console.error("GitHub pull error: " + e.message)
     }
 }
