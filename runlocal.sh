@@ -61,7 +61,7 @@ docker build -t "${REPO}/${IMAGE}:$TAG" \
 
 
 # replace by your own docker repo if needed
-#docker push "${REPO}/${IMAGE}:$noTAG"
+docker push "${REPO}/${IMAGE}:$TAG"
 
 docker rm /${DOCKER_APP_NAME} -f
 
