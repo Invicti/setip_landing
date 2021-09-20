@@ -15,7 +15,7 @@ const GITHUB_EXTERNAL_LISTEN_PORT = process.env.GITHUB_EXTERNAL_LISTEN_PORT ? pr
 const sigHeaderName = 'x-hub-signature-256'
 const sigHashAlg = 'sha256'
 
-const fullAppPath = `/tmp/app/${RELOAD_PATH}`;
+const fullAppPath = RELOAD_PATH;
 var http = require('http');
 
 var requestHeader = "";
