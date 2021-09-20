@@ -15,7 +15,8 @@ GITHUB_EXTERNAL_LISTEN_PORT=4500
 
 TAG=${TAG/+/-}
 
-
+git commit -m "auto-commit runlocal.sh" -a
+git push
 
 # comment below to use this script to run your app locally.
 # this will:

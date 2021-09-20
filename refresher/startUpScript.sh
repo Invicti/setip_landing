@@ -2,14 +2,16 @@
 echo "-- Before First container startup --"
 CONTAINER_ALREADY_STARTED="CONTAINER_ALREADY_STARTED_PLACEHOLDER"
 TARGET_DIR=${APPLICATION_ROOT_DIRECTORY-''}
-echo 
-echo $GITHUB_HOOK_SECRET
-echo $DOCKER_APP_NAME
-echo $GITHUB_WEBHOOK_PATH
-echo $APP_EXTERNAL_LISTEN_IP
-echo $GITHUB_EXTERNAL_LISTEN_IP
-echo $APP_EXTERNAL_LISTEN_PORT
-echo $GITHUB_EXTERNAL_LISTEN_PORT
+ 
+echo GITHUB_HOOK_SECRET: $GITHUB_HOOK_SECRET
+echo DOCKER_APP_NAME: $DOCKER_APP_NAME
+echo GITHUB_WEBHOOK_PATH: $GITHUB_WEBHOOK_PATH
+echo APP_EXTERNAL_LISTEN_IP: $APP_EXTERNAL_LISTEN_IP
+echo GITHUB_EXTERNAL_LISTEN_IP: $GITHUB_EXTERNAL_LISTEN_IP
+echo APP_EXTERNAL_LISTEN_PORT: $APP_EXTERNAL_LISTEN_PORT
+echo GITHUB_EXTERNAL_LISTEN_PORT: $GITHUB_EXTERNAL_LISTEN_PORT
+echo APP_RELOAD_PATH: $APP_RELOAD_PATH
+
 
 if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     touch $CONTAINER_ALREADY_STARTED
@@ -26,10 +28,9 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     npm install
     #start  both the reload app (in the background) and (using nodemon) the actual Node app
     cd /tmp
-    echo "starting reload app and nodemon"
+    echo "starting gitreload and npm  run-script dev"
     (echo "start reload";npm start; echo "reload app finished") & 
-    cd /tmp/app/$TARGET_DIR; 
-    echo "starting npm for app cloned from $GITHUB_URL in /tmp/app/${TARGET_DIR}";
+    echo "starting npm  run-script dev for app cloned from $GITHUB_URL in /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
         cd /tmp/app/; 
     else
@@ -43,9 +44,9 @@ else
     
     echo "starting app's startup npm dev script cloned from $GITHUB_URL in directory /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_STARTUP ]; then
-        cd /tmp/app/$TARGET_DIR; 
+        cd /tmp/app/$APP_STARTUP; 
     else
-        cd /tmp/app/$TARGET_DIR/$APP_STARTUP; 
+        cd /tmp/app/$APP_STARTUP; 
     fi
     rm -fr .parcel-cache&& npm  run-script dev;
 fi

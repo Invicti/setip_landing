@@ -30,7 +30,7 @@ var server = http.createServer(function (request, response) {
     } else {
         requestHeader = request.headers[sigHeaderName];
     }
-    if (request.method === 'GET' && request.url === RELOAD_PATH) {
+    if (request.method === 'GET' && request.url === GITHUB_WEBHOOK_PATH) {
         console.log(`reload request starting at ${new Date().toISOString()}...`);
         refreshAppFromGit();
         response.write(`RELOADED!!${new Date().toISOString()}`);
@@ -100,7 +100,7 @@ var server = http.createServer(function (request, response) {
     }
     else {
         // respond
-        response.write('Reload is live at path ' + RELOAD_PATH);
+        response.write('Reload is live at path ' + GITHUB_WEBHOOK_PATH);
         response.end();
     }
 }); //http.createServer
@@ -118,7 +118,7 @@ async function refreshAppFromGit() {
     try {
 
         const git  = simpleGit({
-            baseDir: RELOAD_PATH,
+            baseDir: appdir,
             binary: 'git',
             maxConcurrentProcesses: 6,
          });
