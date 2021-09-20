@@ -67,7 +67,7 @@ var server = http.createServer(function (request, response) {
             }
 
             var githubEvent = JSON.parse(decodeURIComponent(body.substring(8)))
-            console.debug(`Github hook data: ${JSON.stringify(githubEvent)}`)
+           // console.debug(`Github hook data: ${JSON.stringify(githubEvent)}`)
             try {
                 var commits = {}
                 if (githubEvent.commits)
