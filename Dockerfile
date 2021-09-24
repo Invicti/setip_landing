@@ -41,6 +41,9 @@ RUN n latest
 RUN npm install yarn -g
 RUN npm install -g nodemon
 RUN npm install -g parcel
+RUN npm install -g forever
+RUN npm install -g typescript
+RUN npm install -g ts-node
 COPY ./refresher/package.json /tmp
 COPY ./refresher/gitserver.js /tmp
 RUN cd /tmp && npm install 

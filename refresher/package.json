@@ -4,7 +4,7 @@
   "description": "",
   "main": "gitserver.js",
   "scripts": {
-    "start": "node gitserver.js"
+    "start": "forever start -c node gitserver.js"
   },
   "eslintConfig": {
     "parserOptions": {
