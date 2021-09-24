@@ -1,0 +1,8 @@
+{
+  "instantMongo": {
+    "connections": [{
+      "name": "New Database Connection",
+      "uri": "mongodb://localhost:2017/setip_dev"
+    }]
+  }
+}

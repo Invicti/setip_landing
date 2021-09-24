@@ -10,7 +10,7 @@ GITHUB_WEBHOOK_PATH="/githook"
 APP_RELOAD_PATH=""
 APP_EXTERNAL_LISTEN_IP=0.0.0.0
 GITHUB_EXTERNAL_LISTEN_IP=0.0.0.0
-APP_EXTERNAL_LISTEN_PORT=3001
+APP_EXTERNAL_LISTEN_PORT=3000
 GITHUB_EXTERNAL_LISTEN_PORT=4500
 
 TAG=${TAG/+/-}
@@ -65,7 +65,7 @@ docker build -t "${REPO}/${IMAGE}:$TAG" \
 
 
 # replace by your own docker repo if needed
-docker push "${REPO}/${IMAGE}:$TAG"
+#docker push "${REPO}/${IMAGE}:$TAG"
 
 docker rm /${DOCKER_APP_NAME} -f
 
