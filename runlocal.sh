@@ -1,5 +1,5 @@
 #!/bin/sh
-MAIN_TAG="0.1.3"
+MAIN_TAG="0.1.4"
 TAG="${MAIN_TAG:-latest}"
 IMAGE="live-reload"
 REPO="invictieu"
@@ -65,7 +65,7 @@ docker build -t "${REPO}/${IMAGE}:$TAG" \
 
 
 # replace by your own docker repo if needed
-#docker push "${REPO}/${IMAGE}:$TAG"
+docker push "${REPO}/${IMAGE}:$TAG"
 
 docker rm /${DOCKER_APP_NAME} -f
 
