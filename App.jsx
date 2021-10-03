@@ -22,7 +22,7 @@ const copyActionData = {
 const artboardData = {
   poweredAndHostedB: "Powered and hosted by setip.io",
   setipioLlc2: "© setipio, LLC. 2021",
-  oneApiOneIpOwn: "One API, one IP, own your cloud anywhere",
+  oneApiOneIpOwn: "One API, one IP, own your cloud, anywhere",
   commandarea: (
     <>
       curl -X &quot;POST&quot; &quot;http://api.setip.io/api/ip&quot; \<br /> -H
@@ -37,7 +37,7 @@ const artboardData = {
     </>
   ),
   spanText:
-    "Posting to this API will returns your IP address and bundled services.",
+    "Posting to this API will return your IP address and bundled services.",
   spanText2: " ",
   spanText3: (
     <>
@@ -95,9 +95,9 @@ const artboardData = {
       universe without intruding their existing network setup.
     </>
   ),
-  deployInternetFaci: "Deploy Internet facing apps from anywhere on anything",
-  supportsInternetSt: "Supports Internet standards",
-  dnsIpEntriesToSh: "DNS/IP entries to share your IP for easy access",
-  autoSslForHttpH: "Auto SSL for HTTP, HTTP2 and QUIC end-points",
+  deployInternetFaci: "Deploy Internet facing apps from anywhere, on anything",
+  supportsInternetSt: "Automated SSL enabled DNS/IP entries",
+  dnsIpEntriesToSh: "Open end points from laptops to kubernete clusters",
+  autoSslForHttpH: "Wireguard enabled to connect routers",
   copyActionProps: copyActionData,
 };
