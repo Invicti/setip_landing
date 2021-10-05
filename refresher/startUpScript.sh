@@ -28,7 +28,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     npm install
     #start  both the reload app (in the background) and (using nodemon) the actual Node app
     cd /tmp
-    echo "starting gitreload and npm  run-script dev"
+    echo "starting gitreload and npm  run-script dev. New."
     (echo "start reload"&& npm  run-script dev&& echo "reload app finished") & 
     echo "starting npm  run-script dev for app cloned from $GITHUB_URL in /tmp/app/${TARGET_DIR}";
     if [ ! -z $APP_RELOAD_PATH ]; then
