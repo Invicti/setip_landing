@@ -5,9 +5,9 @@ IMAGE="live-reload"
 REPO="invictieu"
 GITHUB_URL=https://github.com/Invicti/setip_landing.git
 GITHUB_HOOK_SECRET="changethisDa#$it"
-DOCKER_APP_NAME="live-reload"
 GITHUB_WEBHOOK_PATH="/githook"
-APP_RELOAD_PATH=""
+DOCKER_APP_NAME="live-reload"
+APP_RELOAD_PATH=
 APP_EXTERNAL_LISTEN_IP=173.21.4.2
 GITHUB_EXTERNAL_LISTEN_IP=173.21.4.2
 APP_EXTERNAL_LISTEN_PORT=3000
@@ -48,24 +48,24 @@ fi
 
 
 
-# Comment below to build docker and run
-docker build -t "${REPO}/${IMAGE}:$TAG" \
---build-arg GITHUB_URL=$GITHUB_URL \
---build-arg GITHUB_HOOK_SECRET=$GITHUB_HOOK_SECRET \
---build-arg DOCKER_APP_NAME=$DOCKER_APP_NAME \
---build-arg APP_RELOAD_PATH=$APP_RELOAD_PATH \
---build-arg GITHUB_WEBHOOK_PATH=$GITHUB_WEBHOOK_PATH \
---build-arg APP_EXTERNAL_LISTEN_IP=$APP_EXTERNAL_LISTEN_IP \
---build-arg GITHUB_EXTERNAL_LISTEN_IP=$GITHUB_EXTERNAL_LISTEN_IP \
---build-arg APP_EXTERNAL_LISTEN_PORT=$APP_EXTERNAL_LISTEN_PORT \
---build-arg GITHUB_EXTERNAL_LISTEN_PORT=$GITHUB_EXTERNAL_LISTEN_PORT \
-.  # --no-cache
+# # Comment below to build docker and run
+# docker build -t "${REPO}/${IMAGE}:$TAG" \
+# --build-arg GITHUB_URL=$GITHUB_URL \
+# --build-arg GITHUB_HOOK_SECRET=$GITHUB_HOOK_SECRET \
+# --build-arg DOCKER_APP_NAME=$DOCKER_APP_NAME \
+# --build-arg APP_RELOAD_PATH=$APP_RELOAD_PATH \
+# --build-arg GITHUB_WEBHOOK_PATH=$GITHUB_WEBHOOK_PATH \
+# --build-arg APP_EXTERNAL_LISTEN_IP=$APP_EXTERNAL_LISTEN_IP \
+# --build-arg GITHUB_EXTERNAL_LISTEN_IP=$GITHUB_EXTERNAL_LISTEN_IP \
+# --build-arg APP_EXTERNAL_LISTEN_PORT=$APP_EXTERNAL_LISTEN_PORT \
+# --build-arg GITHUB_EXTERNAL_LISTEN_PORT=$GITHUB_EXTERNAL_LISTEN_PORT \
+# .  # --no-cache
 
 
 
 
 # replace by your own docker repo if needed
-docker push "${REPO}/${IMAGE}:$TAG"
+#docker push "${REPO}/${IMAGE}:$TAG"
 
 docker rm /${DOCKER_APP_NAME} -f
 
@@ -73,6 +73,7 @@ docker rm /${DOCKER_APP_NAME} -f
 # It will return the endpoint IPS that can be inserted
 # below in place of the IPs.
 
+printenv
 
 docker run -it  \
 --name ${DOCKER_APP_NAME} \

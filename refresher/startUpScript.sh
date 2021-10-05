@@ -3,6 +3,8 @@ echo "-- Before First container startup --"
 CONTAINER_ALREADY_STARTED="CONTAINER_ALREADY_STARTED_PLACEHOLDER"
 TARGET_DIR=${APPLICATION_ROOT_DIRECTORY-''}
 
+printenv
+
 echo GITHUB_HOOK_SECRET: $GITHUB_HOOK_SECRET
 echo DOCKER_APP_NAME: $DOCKER_APP_NAME
 echo GITHUB_WEBHOOK_PATH: $GITHUB_WEBHOOK_PATH
@@ -40,7 +42,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
 else
     echo "-- Not first container startup (new)--"
     cd /tmp
-    (echo "start reload";npm run-script dev; echo "starting app finished") &
+    (echo "start reload"&& npm run-script dev&& echo "starting app finished") &
     
     echo "starting app's startup npm dev script cloned from $GITHUB_URL in directory /tmp/app/${APP_RELOAD_PATH}";
     if [ ! -z $APP_RELOAD_PATH ]; then
