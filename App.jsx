@@ -25,7 +25,7 @@ const artboardData = {
   oneApiOneIpOwn: "One API, one IP, own your cloud, anywhere",
   commandarea: (
     <>
-      curl -X &quot;POST&quot; &quot;http://api.setip.io/api/ip&quot; \<br /> -H
+      curl -X &quot;POST&quot; &quot;https://api.setip.io/api/ip&quot; \<br /> -H
       &#x27;Content-Type: application/json; charset=utf-8&#x27; \<br /> -d
       $&#x27;&#x7B; \<br /> &quot;email&quot;:
       &quot;TYPE/PASTE_YOUR_EMAIL&quot;, \<br /> &quot;password&quot;:
@@ -97,7 +97,7 @@ const artboardData = {
   ),
   deployInternetFaci: "Deploy Internet facing apps from anywhere, on anything",
   supportsInternetSt: "Automated SSL enabled DNS/IP entries",
-  dnsIpEntriesToSh: "Open end points from laptops to kubernete clusters",
+  dnsIpEntriesToSh: "Open Kubernetes cluster or mighty PIs",
   autoSslForHttpH: "Wireguard enabled to connect routers",
   copyActionProps: copyActionData,
 };

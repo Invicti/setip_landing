@@ -2,7 +2,8 @@
   "name": "react-package",
   "scripts": {
     "dev": "parcel --port ${APP_EXTERNAL_LISTEN_PORT} index.html",
-    "prod": "parcel build  --port ${APP_EXTERNAL_LISTEN_PORT} index.html",
+    "devlocal": "parcel --host 173.21.4.2 --port 3000 index.html",
+    "prod": "parcel build index.html",
     "build": "parcel build index.html"
   },
   "dependencies": {
