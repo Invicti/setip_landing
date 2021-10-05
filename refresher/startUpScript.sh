@@ -38,7 +38,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     fi
     rm -fr .parcel-cache&& npm  run-script dev;
 else
-    echo "-- Not first container startup --"
+    echo "-- Not first container startup (new)--"
     cd /tmp
     (echo "start reload";npm run-script dev; echo "starting app finished") &
     
